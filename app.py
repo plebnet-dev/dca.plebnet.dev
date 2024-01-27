@@ -16,7 +16,7 @@ currency = usd
 Inputs: amount, currency, date range, frequency
 """
 
-LOGO = "assets/BAHK_black_square.svg"
+LOGO = "assets/logo-circular-transparent.png"
 
 # stylesheet with the .dbc class
 # dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.min.css"
@@ -53,11 +53,7 @@ template_type = "vapor"
 items_bar = dbc.Row(
     [
         dbc.Col(
-            dbc.NavItem(dbc.NavLink("Rates", href="https://rates.bitcoin.org.hk/"))
-        ),
-        dbc.Col(dbc.NavItem(dbc.NavLink("Sats", href="https://sats.bitcoin.org.hk/"))),
-        dbc.Col(
-            dbc.NavItem(dbc.NavLink("Blocks", href="https://blocks.bitcoin.org.hk/"))
+            dbc.NavItem(dbc.NavLink("Rates", href="https://rates.plebnet.dev/"))
         ),
     ],
     className="text-white ms-auto flex-nowrap mt-3 mt-md-0",
@@ -72,11 +68,11 @@ navbar = dbc.Navbar(
                 dbc.Row(
                     [
                         dbc.Col(html.Img(src=LOGO, height="60px")),
-                        dbc.Col(dbc.NavbarBrand("PLEBNET.DEV", className="ms-2")),
+                        dbc.Col(dbc.NavbarBrand("DCA Calculator", className="ms-2")),
                     ],
                     align="center",
                 ),
-                href="https://bitcoin.org.hk",
+                href="https://plebnet.dev/",
                 style={"textDecoration": "none"},
             ),
             dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
@@ -110,7 +106,6 @@ currency_type = html.Div(
         dbc.Label("Currency: ", className="ms-2"),
         dbc.RadioItems(
             options=[
-                {"label": "HKD", "value": "HKD"},
                 {"label": "USD", "value": "USD"},
             ],
             value="HKD",
@@ -179,7 +174,7 @@ footer = html.Div(
     [
         html.A(
             "Source",
-            href="https://github.com/bitkarrot/dca-calculator",
+            href="https://github.com/plebnet-dev/dca.plebnet.dev.git",
             style={"textDecoration": "none"},
         )
     ],
@@ -359,7 +354,7 @@ def display_area(amount, currency, freq, start_date, end_date):
             + f"\n\n Total Fiat spent: "
             + '{:20,.2f}'.format(total_fiat) 
             + f" {currency}.  "
-            + f"\n\n For Current BTC Exchange Rates, visit https://rates.bitcoin.org.hk/ "
+            + f"\n\n For Current BTC Exchange Rates, visit https://rates.plebnet.dev/ "
         )
         return [fig, dcc.Markdown(stacker_info)]
     except Exception as e:
